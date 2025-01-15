@@ -21,52 +21,40 @@ export function ExperienceSection() {
   }
 
   return (
-    <section id="experience-section" className="space-y-8 py-24 md:py-32">
+    <section id="experience-section" className="py-12 md:py-16">
       <SectionHeader 
         title="Work Experience"
         subtitle="My professional journey and key achievements"
       />
       <motion.div 
-        className="relative space-y-6"
+        className="space-y-6"
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true }}
+        viewport={{ amount: 0.2 }}
       >
-        <div className="absolute left-8 top-4 h-full w-px bg-blue-100 md:left-1/2" />
         {experience.map((role, index) => (
           <motion.div 
             key={role.title} 
             variants={item}
-            className="relative md:flex md:justify-center"
+            className="flex justify-center"
           >
-            <div className="absolute left-8 top-4 h-3 w-3 rounded-full border-2 border-blue-600 bg-white md:left-1/2 md:-translate-x-[5px]" />
-            <Card className="ml-16 transition-colors hover:border-blue-200 md:ml-0 md:w-[calc(50%-2rem)] md:even:ml-[calc(50%+2rem)]">
+            <Card className="transition-colors hover:border-[#edf0fc] bg-[#1a365d] w-[90%] max-w-3xl">
               <CardHeader>
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-2">
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-blue-800">{role.title}</CardTitle>
-                    <span className="text-sm text-slate-500">{role.duration}</span>
+                    <CardTitle className="text-white text-2xl font-bold">{role.title}</CardTitle>
+                    <span className="text-[rgb(204,214,246)] text-xl">{role.duration}</span>
                   </div>
-                  <div className="text-sm text-blue-600">
+                  <div className="text-[rgb(204,214,246)] text-xl">
                     {role.company}
                   </div>
                 </div>
               </CardHeader>
               <CardContent>
-                <ul className="list-inside space-y-2 text-slate-600">
-                  {role.achievements.map((achievement, achievementIndex) => (
-                    <motion.li 
-                      key={achievementIndex}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: achievementIndex * 0.1 }}
-                      viewport={{ once: true }}
-                      className="flex items-start gap-2"
-                    >
-                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-400" />
-                      <span>{achievement}</span>
-                    </motion.li>
+                <ul className="list-disc pl-4 space-y-3 text-[rgb(204,214,246)] text-lg">
+                  {role.achievements.map((achievement, i) => (
+                    <li key={i}>{achievement}</li>
                   ))}
                 </ul>
               </CardContent>
@@ -80,34 +68,51 @@ export function ExperienceSection() {
 
 const experience = [
   {
-    title: "Senior Software Engineer",
-    company: "Tech Corp",
-    duration: "2021 - Present",
+    title: "CTO & Founder",
+    company: "Primes Crest",
+    duration: "07/2023 - Present",
     achievements: [
-      "Led a team of 5 engineers in developing a new microservices architecture",
-      "Reduced API response times by 40% through implementation of caching strategies",
-      "Mentored junior developers and conducted technical interviews",
-    ],
+      "Built AI recommendation engine in Python providing real estate investment advice in 30 seconds",
+      "Deployed Next.js web app for commercial firms to analyze apartment pricing trends",
+      "Implemented data science tools to analyze 10,000+ geographic ranges for price outliers"
+    ]
+  },
+  {
+    title: "Lead, Accelerators & Incubators",
+    company: "Polygon Labs",
+    duration: "06/2022 - 07/2023",
+    achievements: [
+      "Managed $2M budget to accelerate growth for web3 startups like Liquifi and Zoth",
+      "Enhanced portfolio projects' technical quality through architectural improvements",
+      "Optimized accelerator operations achieving 30% cost savings while maintaining quality"
+    ]
+  },
+  {
+    title: "Product & Agile Consultant",
+    company: "McKinsey & Company",
+    duration: "10/2020 - 06/2022",
+    achievements: [
+      "Led product transformation for ecommerce startup, prioritizing features for $1B revenue target",
+      "Implemented Agile methodology for 100+ person org, improving team performance 2x",
+      "Built MVP for infrastructure management SaaS, reducing costs 40% and bugs 50%"
+    ]
+  },
+  {
+    title: "CTO & Co-Founder",
+    company: "Key Learning",
+    duration: "08/2019 - 08/2020",
+    achievements: [
+      "Led engineering and product for edtech platform serving refugees, raising $10K in funding",
+      "Built platform for curating educational YouTube content with translation support"
+    ]
   },
   {
     title: "Software Engineer",
-    company: "StartUp Inc",
-    duration: "2019 - 2021",
+    company: "Spokeo",
+    duration: "05/2018 - 08/2018",
     achievements: [
-      "Developed and maintained multiple full-stack applications using React and Node.js",
-      "Implemented CI/CD pipelines reducing deployment time by 60%",
-      "Collaborated with product team to improve user experience and implement new features",
-    ],
-  },
-  {
-    title: "Junior Developer",
-    company: "Digital Agency",
-    duration: "2017 - 2019",
-    achievements: [
-      "Built responsive websites for various clients using modern web technologies",
-      "Optimized website performance and SEO rankings",
-      "Participated in daily stand-ups and sprint planning meetings",
-    ],
-  },
+      "Built SEO-driven people search app using MEAN stack, driving $1M in new revenue",
+      "Developed Python scripts to clean 6M+ records, improving data accuracy by 10%"
+    ]
+  }
 ]
-

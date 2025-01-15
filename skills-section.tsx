@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { SectionHeader } from "./components/section-header"
-import { Code2, Globe, Server, Terminal } from 'lucide-react'
+import { Code2, ClipboardCheck, Server, Terminal } from 'lucide-react'
 
 export function SkillsSection() {
   const container = {
@@ -22,17 +22,16 @@ export function SkillsSection() {
   }
 
   return (
-    <section id="skills-section" className="space-y-8 py-24 md:py-32">
+    <section id="skills-section" className="py-12 md:py-16">
       <SectionHeader 
         title="Skills & Technologies"
-        subtitle="A comprehensive overview of my technical expertise and tools I work with"
+        subtitle="A sample overview of some of my the technical skills and tools I work with"
       />
       <motion.div 
         className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true }}
       >
         {skillCategories.map((category, index) => (
           <motion.div 
@@ -41,27 +40,24 @@ export function SkillsSection() {
             whileHover={{ y: -5 }}
             transition={{ duration: 0.2 }}
           >
-            <Card className="relative h-full overflow-hidden">
-              <div className="absolute right-2 top-2 text-blue-100">
+            <Card className="relative h-full overflow-hidden bg-[#1a365d]">
+              <div className="absolute right-2 top-2 text-[rgb(204,214,246)]">
                 {categoryIcons[index]}
               </div>
               <CardHeader>
-                <CardTitle className="text-blue-800">{category.title}</CardTitle>
+                <div className="space-y-1">
+                  <CardTitle className="text-xl text-white">
+                    {category.title}
+                  </CardTitle>
+                  <div className="text-base text-[rgb(204,214,246)]">
+                    {category.skills.join(" • ")}
+                  </div>
+                </div>
               </CardHeader>
               <CardContent>
-                <ul className="list-inside space-y-2 text-slate-600">
-                  {category.skills.map((skill, skillIndex) => (
-                    <motion.li 
-                      key={skill}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: skillIndex * 0.1 }}
-                      viewport={{ once: true }}
-                      className="flex items-center gap-2"
-                    >
-                      <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
-                      {skill}
-                    </motion.li>
+                <ul className="list-disc pl-4 space-y-2 text-[rgb(204,214,246)]">
+                  {category.skills.map((skill, i) => (
+                    <li key={i}>{skill}</li>
                   ))}
                 </ul>
               </CardContent>
@@ -73,29 +69,28 @@ export function SkillsSection() {
   )
 }
 
-const categoryIcons = [
-  <Code2 size={48} />,
-  <Server size={48} />,
-  <Globe size={48} />,
-  <Terminal size={48} />,
-]
-
 const skillCategories = [
   {
-    title: "Frontend",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Redux"]
+    title: "Frontend Development",
+    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Material UI"]
   },
   {
-    title: "Backend",
-    skills: ["Node.js", "Express", "Python", "PostgreSQL", "MongoDB"]
+    title: "Backend Development",
+    skills: ["Node.js", "Express", "Python", "Django", "RESTful APIs"]
   },
   {
-    title: "DevOps & Cloud",
-    skills: ["AWS", "Docker", "CI/CD", "Linux", "Kubernetes"]
+    title: "Project Delivery",
+    skills: ["Scrum Master", "Customer Journey Mapping", "UI/UX", "Technical Writing", "User Acceptance Testing"]
   },
   {
-    title: "Tools & Methods",
-    skills: ["Git", "Agile", "TDD", "REST APIs", "GraphQL"]
+    title: "Development Tools",
+    skills: ["Git", "Docker", "AWS", "CI/CD", "Testing"]
   }
 ]
 
+const categoryIcons = [
+  <Code2 size={48} />,
+  <Server size={48} />,
+  <ClipboardCheck size={48} />,
+  <Terminal size={48} />
+]

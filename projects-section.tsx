@@ -24,7 +24,7 @@ export function ProjectsSection() {
   }
 
   return (
-    <section id="projects-section" className="space-y-8 py-24 md:py-32">
+    <section id="projects-section" className="py-12 md:py-16">
       <SectionHeader 
         title="Featured Projects"
         subtitle="A selection of my recent work and personal projects"
@@ -34,7 +34,6 @@ export function ProjectsSection() {
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true }}
       >
         {projects.map((project, index) => (
           <motion.div 
@@ -43,45 +42,48 @@ export function ProjectsSection() {
             whileHover={{ y: -5 }}
             transition={{ duration: 0.2 }}
           >
-            <Card className="group relative h-full overflow-hidden">
-              <div className="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-blue-50 transition-transform duration-500 group-hover:scale-150" />
+            <Card className="group relative h-full overflow-hidden bg-[#1a365d]">
+              <div className="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-[#edf0fc]/10 transition-transform duration-500 group-hover:scale-150" />
               <CardHeader className="relative space-y-4">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm text-blue-600">0{index + 1}</span>
-                    <div className="h-px flex-1 bg-blue-100" />
+                    <span className="text-[rgb(204,214,246)]">0{index + 1}</span>
+                    <CardTitle className="text-xl text-white">{project.title}</CardTitle>
                   </div>
-                  <CardTitle className="text-blue-800">{project.title}</CardTitle>
-                  <CardDescription className="text-slate-600">{project.description}</CardDescription>
+                  <div className="text-base text-[rgb(204,214,246)]">{project.description}</div>
                 </div>
-              </CardHeader>
-              <CardContent className="relative space-y-4">
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
-                    <Badge key={tech} variant="secondary" className="bg-blue-50 text-blue-700 hover:bg-blue-100">
+                    <Badge 
+                      key={tech}
+                      variant="outline" 
+                      className="border-[#edf0fc] text-[rgb(204,214,246)] text-sm"
+                    >
                       {tech}
                     </Badge>
                   ))}
                 </div>
+              </CardHeader>
+              <CardContent className="relative">
                 <div className="flex gap-4">
                   {project.github && (
-                    <Link
+                    <Link 
                       href={project.github}
-                      className="group/link inline-flex items-center gap-1 text-sm text-slate-600 hover:text-blue-600"
+                      target="_blank"
+                      className="flex items-center gap-1 text-[rgb(204,214,246)] hover:text-white"
                     >
                       <Github className="h-4 w-4" />
-                      Source
-                      <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity group-hover/link:opacity-100" />
+                      <span>View Code</span>
                     </Link>
                   )}
-                  {project.demo && (
-                    <Link
-                      href={project.demo}
-                      className="group/link inline-flex items-center gap-1 text-sm text-slate-600 hover:text-blue-600"
+                  {project.live && (
+                    <Link 
+                      href={project.live}
+                      target="_blank"
+                      className="flex items-center gap-1 text-[rgb(204,214,246)] hover:text-white"
                     >
                       <ExternalLink className="h-4 w-4" />
-                      Demo
-                      <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity group-hover/link:opacity-100" />
+                      <span>Live Demo</span>
                     </Link>
                   )}
                 </div>
@@ -96,32 +98,33 @@ export function ProjectsSection() {
 
 const projects = [
   {
-    title: "Project One",
-    description: "A full-stack web application for managing team workflows and task automation.",
-    technologies: ["React", "Node.js", "PostgreSQL", "TypeScript"],
-    github: "#",
-    demo: "#",
+    title: "Amploy",
+    description: "Helping employers amplify their hiring process with a job description improvement engine.",
+    technologies: ["React", "Node.js","Python", "LangChain", ""],
+    github: "https://github.com/garg-anubhav53/jd-recs-with-react"
   },
   {
-    title: "Project Two",
-    description: "Real-time chat application with end-to-end encryption and file sharing capabilities.",
-    technologies: ["Next.js", "WebSocket", "Redis", "TailwindCSS"],
-    github: "#",
-    demo: "#",
+    title: "RentScan",
+    description: "A data aggregation and analysis tool to help landlords price their apartment units",
+    technologies: ["Django", "Python", "BigQuery", "AWS"],
+    github: "https://github.com/garg-anubhav53/listings_scrape"
   },
   {
-    title: "Project Three",
-    description: "Mobile-first e-commerce platform with integrated payment processing and inventory management.",
-    technologies: ["React Native", "Express", "MongoDB", "Stripe"],
-    github: "#",
-    demo: "#",
+    title: "Havenly",
+    description: "A month to month apartment rental platform with search and user authentication",
+    technologies: ["React", "Node.js", "PostgreSQL", "Tailwind CSS"],
+    github: "https://github.com/garg-anubhav53/abnbclone"
   },
   {
-    title: "Project Four",
-    description: "AI-powered content generation tool for marketing teams and content creators.",
-    technologies: ["Python", "FastAPI", "React", "OpenAI"],
-    github: "#",
-    demo: "#",
-  },
+    title: "SES",
+    description: "SES stands for simple email scheduler. It takes inputs on a one page form to help users schedule email campaigns quickly",
+    technologies: ["Python", "Cron Jobs", "Hertzner", "Docker"],
+    github: "https://github.com/garg-anubhav53/emailer-web-app"
+  }, 
+  {
+    title: "Candidate Scan",
+    description: "An API that takes a stackoverflow link and returns candidate information from multiple sources",
+    technologies: ["Python", "Google App Script", "Supabase", "Selenium"],
+    github: "https://github.com/garg-anubhav53/SOGHFunctionVercel"
+  }
 ]
-

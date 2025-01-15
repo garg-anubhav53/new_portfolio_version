@@ -1,19 +1,22 @@
+import '../styles/globals.css'
+import '../styles/waves.css'
 import type { Metadata } from 'next'
-import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'Anubhav Garg - Portfolio',
+  description: 'Full Stack Software Engineer',
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className="dark">
+      <body className="bg-navy-900 text-light-blue-100">
+        {children}
+      </body>
     </html>
   )
 }

@@ -11,11 +11,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={cn(plusJakarta.className, "min-h-screen bg-slate-50/95")}>
+      <body className={cn(plusJakarta.className, "min-h-screen bg-[#112240]")}>
         <GradientBackground />
         {children}
       </body>
     </html>
   )
 }
-

@@ -27,18 +27,18 @@ export function NavBar() {
 
   return (
     <motion.nav 
-      className="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-md shadow-sm"
+      className="fixed top-0 z-50 w-full bg-[#112240]/80 backdrop-blur-md shadow-sm"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="container flex h-16 items-center justify-center gap-8">
-        {["about", "skills", "projects", "experience"].map((section) => (
+        {["about", "experience", "skills", "projects"].map((section) => (
           <a
             key={section}
             href={`#${section}-section`}
-            className={`text-sm font-medium transition-colors hover:text-blue-600 ${
-              activeSection === section ? "text-blue-600" : "text-slate-600"
+            className={`text-sm font-medium transition-colors hover:text-[rgb(204,214,246)] ${
+              activeSection === section ? "text-[rgb(204,214,246)]" : "text-[rgb(204,214,246)]/70"
             }`}
           >
             {section.charAt(0).toUpperCase() + section.slice(1)}
@@ -48,4 +48,3 @@ export function NavBar() {
     </motion.nav>
   )
 }
-
